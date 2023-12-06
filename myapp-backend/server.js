@@ -33,6 +33,16 @@ app.get('/Item', (req, res) => {
     }
 );
 
+// Get specific item from the database
+app.get('/Item/:id', async (req, res) => {
+    knex('Item')
+        .select('*')
+        .where('id', req.params.id)
+        .then(item => {
+            res.status(200).json(item);
+        })
+})
+
 
 // Post request to add a new user to the database
 app.post('/User', async(req, res) => {

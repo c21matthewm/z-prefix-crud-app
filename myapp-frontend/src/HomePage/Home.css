@@ -1,0 +1,22 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 50px;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons Button {
+    margin: 10px;
+}
+
+.listitem {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}

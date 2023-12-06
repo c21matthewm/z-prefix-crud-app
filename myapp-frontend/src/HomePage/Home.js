@@ -47,36 +47,37 @@ export const Home = () => {
                 </div>
                 <div>
                     <h3>Authorized Users:</h3>
-                    <ul>
+                    <div className="users">
                         {users.map((user) => (
-                            <li key={user.id}>{user.first_name} {user.last_name}</li>
+                            <span key={user.id}>{user.first_name} {user.last_name}</span>
                         ))}
-                    </ul>
+                    </div>
                     <h3>Items in the database:</h3>
-                        <ul>
+                        <ul className="items">
                             {items.map((item) => (
                                 <div className="listitem">
-                                    <li key={item.id}>{item.item_name} - 
-                                    Owner: {users.find(user => user.id == item.userId)?.first_name}</li>
+                                    <li key={item.id}>Item: {item.item_name}</li>
+                                    <span>Description: {item.description}</span>
+                                    <span>Quantity: {item.quantity}</span> 
+                                    Owner: {users.find(user => user.id == item.userId)?.first_name}
+                                    {/* <Button id="view-item" variant="outlined" href={"/Item/" + item.id}>View Item</Button> */}
                                     {loggedIn ? <Button id="delete-item" variant="outlined" color="error" startIcon={<DeleteIcon/>} onClick={() => deleteItem(item.id)}>Delete Item</Button> : null}
                                 </div>
                             ))}
                         </ul>
                     {loggedIn ? <div>
                     <h3>My Items</h3>
-                        <ul>
+                        <ul className="items">
                             {items.filter(item => item.userId == users.find(user => user.username == username)?.id).map((item) => (
-                                <li key={item.id}>{item.item_name}</li>
+                                <div className="listitem">
+                                    <li key={item.id}>Item: {item.item_name}</li>
+                                    <span>Description: {item.description}</span>
+                                    <span>Quantity: {item.quantity}</span>
+                                </div>
                             ))}
                         </ul>
                     </div> : null}
                 </div>
-                {/* <div className="buttons">
-                    <Button id="create-account" variant='contained' onClick={() => setShowCreateAccountPage(true)}>Create Account</Button>
-                    <Button id="login-button" variant='contained' onClick={() => setShowLoginPopup(true)}>Login</Button>
-                    <Button id="logout-button" color='error' variant='contained' onClick={() => setLoggedIn(false)}>Logout</Button>
-                    {loggedIn ? <Button id="add-item" variant='contained' onClick={() => setShowAddItemPopup(true)}>Add Item</Button> : null}
-                </div> */}
             </div>
             }
         </div>

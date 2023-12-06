@@ -15,8 +15,6 @@ export const LoginPopup = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 };
-        
-
 
     return (
         <form onSubmit={handleSubmit}>
